@@ -1,239 +1,227 @@
-# Full Stack Application
 
-Sistem Fullstack sederhana menggunakan Nextjs 15 sebagai FrontEnd & Golang sebagai Backend
-Dibuat untuk memenuhi Rekrutmen di PT Century Batteries Indonesia
+# Takehome Test - Next.js + Golang
+
+Sistem Fullstack Sederhana menggunakan Next.js 15 sebagai Frontend dan Golang sebagai Backend.
 
 ## 🔗 Demo Project
 
-- **Frontend**: [https://takehometest-nextjs.vercel.app](https://takehometest-nextjs.vercel.app)
+- **Frontend**: [https://takehometest-nextjs.vercel.app](https://takehometest-nextjs.vercel.app)  
 - **Backend API**: [https://takehometest-golang.vercel.app](https://takehometest-golang.vercel.app)
 
-## 🛠️ Tech Stack
+## TechStack
 
 ### Backend
-- **Go** - Programming language
+- **Go** - Bahasa pemrograman
 - **Gin** - Web Framework
-- **JSON Files** - Data storage
+- **File JSON** - Penyimpanan data
 
 ### Frontend
-- **Javascript** - Programming Language
+- **JavaScript** - Bahasa pemrograman
 - **Next.js 15** - Web Framework
 - **Tailwind CSS** - Styling
-- **Shadcn UI** - UI Component
-- **Vercel** - Deployment Platform
+- **Shadcn UI** - Komponen UI
+- **Vercel** - Platform Deploy
 
-## Quick Start
+## Instalasi Project
 
 ### Prerequisites
 
-Pastikan sudah telah terinstall:
-- [Go](https://golang.org/dl/) (version 1.19+)
-- [Node.js](https://nodejs.org/) (version 18+)
+Pastikan Anda sudah menginstal:
+
+- [Go](https://golang.org/dl/) (versi 1.19+)
+- [Node.js](https://nodejs.org/) (versi 18+)
 - [Git](https://git-scm.com/)
 
-### Project Installation
+### Instalasi Proyek
 
 ```bash
-# Clone repository utama
+# Clone repositori
 git clone https://github.com/fathanpr/takehometest-fullstack.git
 cd takehometest-fullstack
+```
 
-## 🔧 Backend Setup
+---
 
-### 1. Navigate to Backend Directory
+## ⚙️ Setup Backend
+
+### 1. Masuk ke Direktori Backend
 
 ```bash
 cd backend
 ```
 
-### 2. Install Dependencies
+### 2. Install Dependensi
 
 ```bash
 go mod tidy
 ```
 
-### 3. Environment Variables
+### 3. Variabel Lingkungan
 
 Buat file `.env` di direktori backend:
 
 ```env
-# set ini ke debug untuk development dan release untuk production
-GIN_MODE=release
-
-# Untuk Generate JWT
-API_KEY=2f8c1e7b-4a6d-4c2e-9b1a-3e5d7c8f9a0b
-
-# Path JSON File ketika Deploy di Vercel (Vercel hanya mengizinkan write pada folder /tmp)
-FILE_USER=/tmp/users.json
+GIN_MODE=release            # Gunakan 'debug' untuk mode pengembangan
+API_KEY=2f8c1e7b-...        # API Key untuk JWT
+FILE_USER=/tmp/users.json   # Path file JSON untuk penyimpanan user
 ```
 
-### 4. Data Files Setup
-
-Pastikan direktori `data` tersedia dengan file JSON yang diperlukan:
+### 4. Siapkan File Data
 
 ```bash
-# Buat direktori data jika belum ada
 mkdir -p data
-
-# Contoh struktur file JSON
-# data/users.json
 ```
 
-Contoh struktur file `data/users.json` ketika memiliki data didalamnya:
+Contoh isi `data/users.json`:
+
 ```json
 [
   {
     "id": 1,
     "username": "FATHAN1",
     "email": "fathan1@example.com",
-    "password": "325nmdaiw35423424l324214dskfmsfek"
+    "password": "hashedpassword1"
   },
   {
     "id": 2,
     "username": "FATHAN2",
     "email": "fathan2@example.com",
-    "password": "325nmdaiw35423424l324214dskfmsfek"
-  },
+    "password": "hashedpassword2"
+  }
 ]
 ```
 
-### 5. Run Backend
+### 5. Jalankan Backend
 
 ```bash
 go run main.go
 ```
 
-Backend akan berjalan di `http://localhost:8080`
+Aplikasi backend akan berjalan di `http://localhost:8080`
 
-## Frontend Setup
+---
 
-### 1. Navigate to Frontend Directory
+## 🌐 Setup Frontend
+
+### 1. Masuk ke Direktori Frontend
 
 ```bash
 cd frontend
 ```
 
-### 2. Install Dependencies
+### 2. Install Dependensi
 
 ```bash
 npm install
 ```
 
-### 3. Environment Variables
+### 3. Variabel Lingkungan
 
-Buat file `.env` di root direktori dalam folder frontend:
+Buat file `.env` di dalam direktori `frontend`:
 
 ```env
-# API URLs
-Secara default akan langsung men set http://localhost:8080 sebagai API URL, namun jika berbeda bisa di setting disini.
 NEXT_PUBLIC_API_URL=http://localhost:8080
 ```
 
-### 4. Run Frontend
+### 4. Jalankan Frontend
 
 ```bash
 npm run dev
 ```
 
-Frontend akan berjalan di `http://localhost:3000`
+Frontend akan tersedia di `http://localhost:3000`
 
-## Development Workflow
+---
 
-### Running Both Services
+## Workflow Development
 
-setelah itu jalankan 2 project tersebut secara bersamaan dengan membuka 2 terminal:
+### Menjalankan Keduanya Bersamaan
+
+Buka 2 terminal:
 
 ```bash
 # Terminal 1 - Backend
 cd backend
 go run main.go
 
-# Terminal 2 - Frontend  
+# Terminal 2 - Frontend
 cd frontend
 npm run dev
 ```
 
-### API Endpoints
+### Endpoint API
 
-Backend menyediakan endpoints berikut:
-
-```
-POST   /login           # Login User
-POST   /users           # Create / Register User
-GET    /users/:id       # Get user by ID
-PUT    /users/:id       # Update user
-DELETE /users/:id       # Delete user
+```http
+POST   /login         # Login
+POST   /users         # Register
+GET    /users/:id     # Ambil data user
+PUT    /users/:id     # Update user
+DELETE /users/:id     # Hapus user
 ```
 
-## Deployment
+---
 
-### Backend Deployment (Vercel)
+## 🚀 Deploy ke Vercel
 
-1. **Prepare `vercel.json`** di direktori backend:
+### Backend
+
+1. Buat `vercel.json` di folder `backend`:
 
 ```json
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "api/index.go",
-            "use": "@vercel/go"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/.*",
-            "dest": "api/index.go"
-        }
-    ]
+  "version": 2,
+  "builds": [{ "src": "api/index.go", "use": "@vercel/go" }],
+  "routes": [{ "src": "/.*", "dest": "api/index.go" }]
 }
 ```
 
-2. **Deploy ke Vercel**:
+2. Jalankan deploy:
 
 ```bash
 cd backend
 npx vercel --prod
 ```
 
-setelah itu lakukan login (jika belum) jika sudah tinggal tunggu hingga proses sekesai.
+3. Tambahkan variabel `.env` di dashboard Vercel.
 
-3. **Set Environment Variables** di Vercel Dashboard untuk production.
+---
 
-### Frontend Deployment (Vercel)
+### Frontend
 
-1. **Deploy ke Vercel**:
+1. Deploy:
 
 ```bash
 cd frontend
 npx vercel --prod
 ```
 
-2. **Set Environment Variables** di Vercel Dashboard:
+2. Tambahkan variabel lingkungan di dashboard Vercel:
    - `NEXT_PUBLIC_API_URL`
-   - Variabel environment lainnya
 
-## 🔍 Troubleshooting
+---
 
-### Common Issues
+## ❗ Troubleshooting
 
 1. **CORS Error**
-   - Pastikan `ALLOWED_ORIGINS` di backend sudah benar
-   - Check frontend URL di environment variables
+   - Pastikan frontend URL diizinkan oleh backend
 
-2. **Data File Access**
-   - Pastikan file JSON yang dibutuhkan ada di direktori `data`
-   - Check permission file untuk read/write access
+2. **File JSON tidak ditemukan**
+   - Pastikan file dan folder data tersedia & dapat ditulis
 
-4. **Module Not Found**
+3. **Module tidak ditemukan**
    ```bash
    # Backend
    go mod tidy
-   
+
    # Frontend
    rm -rf node_modules package-lock.json
    npm install
    ```
 
-## 👥 Authors
-- **Fathan Pebrilliestyo Ridwan** - *Takehome Test - PT Century Batteries Indonesia* - [fathanpr](https://github.com/fathanpr)
+---
+
+## 👥 Author
+
+- **Fathan Pebrilliestyo Ridwan**  
+  Takehome Test - PT Century Batteries Indonesia  
+  GitHub: [fathanpr](https://github.com/fathanpr)
