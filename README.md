@@ -3,31 +3,10 @@
 Sistem Fullstack sederhana menggunakan Nextjs 15 sebagai FrontEnd & Golang sebagai Backend
 Dibuat untuk memenuhi Rekrutmen di PT Century Batteries Indonesia
 
-## 📁 Struktur Project
-
-```
-project-root/
-├── backend/          # Go backend API
-│   ├── api/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── data/
-│   ├── services/
-│   ├── middleware/
-│   └── main.go
-├── frontend/         # Next.js frontend
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   └── public/
-└── README.md
-```
-
-## 🔗 Live Deployment
+## 🔗 Demo Project
 
 - **Frontend**: [https://takehometest-nextjs.vercel.app](https://takehometest-nextjs.vercel.app)
-- **Backend API**: [https://takehometest-.vercel.app](https://takehometest-golang.vercel.app)
+- **Backend API**: [https://takehometest-golang.vercel.app](https://takehometest-golang.vercel.app)
 
 ## 🛠️ Tech Stack
 
@@ -43,7 +22,7 @@ project-root/
 - **Shadcn UI** - UI Component
 - **Vercel** - Deployment Platform
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -52,7 +31,7 @@ Pastikan sudah telah terinstall:
 - [Node.js](https://nodejs.org/) (version 18+)
 - [Git](https://git-scm.com/)
 
-### Clone Repository
+### Project Installation
 
 ```bash
 # Clone repository utama
@@ -121,13 +100,12 @@ Contoh struktur file `data/users.json` ketika memiliki data didalamnya:
 ### 5. Run Backend
 
 ```bash
-# Development mode
 go run main.go
 ```
 
 Backend akan berjalan di `http://localhost:8080`
 
-## 🎨 Frontend Setup
+## Frontend Setup
 
 ### 1. Navigate to Frontend Directory
 
@@ -159,7 +137,7 @@ npm run dev
 
 Frontend akan berjalan di `http://localhost:3000`
 
-## 🔄 Development Workflow
+## Development Workflow
 
 ### Running Both Services
 
@@ -187,7 +165,7 @@ PUT    /users/:id       # Update user
 DELETE /users/:id       # Delete user
 ```
 
-## 🚀 Deployment
+## Deployment
 
 ### Backend Deployment (Vercel)
 
