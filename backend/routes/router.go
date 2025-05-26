@@ -3,14 +3,23 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
+	"github.com/joho/godotenv"
 	"takehometest_golang/controllers"
 	"takehometest_golang/middleware"
 	"time"
+	"os"
 )
 
 func SetupRouter() *gin.Engine {
+	godotenv.Load()
+	mode := os.Getenv("GIN_MODE")
 	r := gin.Default()
-	gin.SetMode(gin.ReleaseMode)
+
+	if mode == "release" {
+		gin.SetMode(gin.ReleaseMode)
+	} else {
+		gin.SetMode(gin.DebugMode)
+	}
 
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"https://takehometest-nextjs.vercel.app", "https://takehometest-nextjs-al6tdufd8-fathanprs-projects.vercel.app"},
